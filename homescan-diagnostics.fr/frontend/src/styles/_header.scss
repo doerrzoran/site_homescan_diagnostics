@@ -1,0 +1,193 @@
+ /* Navigation bar styles */
+ nav {
+    position: relative;
+    height: 80px; 
+    background: #FB4414; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; 
+    margin-left: 0;
+    padding-left: 0;
+  }
+  
+  /* Logo styles */
+  .logo {
+    height: 100%; /* Cover the entire height of the navigation bar */
+    margin-right: 20px;
+  }
+  
+  /* Navigation links styles */
+  ul {
+    list-style: none;
+    display: flex;
+    margin-top: auto; /* Center the links vertically at the bottom */
+  }
+  
+  li {
+    margin-right: 20px; /* Adjust margin as needed */
+  }/* Navigation links styles */
+  
+  .navigation {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Make the ul span the entire width */
+    justify-content: space-around; 
+    margin-top: auto;
+  }
+  
+  .navigation a{
+    text-decoration: none;
+    color: #fff; /* Text color for the links */
+    font-size: 18px; /* Adjust font size as needed */
+    font-weight: 400;
+  }
+  
+  .navigation > li {
+    display: inline-block;
+    position: relative;
+  }
+  
+  /* Style for the links in the top-level menu items */
+  .navigation > li > a:hover {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
+  
+  .navigation > li > a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+  
+  }
+  
+  /* Style for the dropdown menus */
+  .navigation ul {
+    width: 150px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #F96F4B; 
+    border-radius: 5px;
+  }
+  
+  /* Style for the dropdown menu items */
+  .navigation ul li {
+    display: block;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .navigation > li:hover > ul {
+    display: block;
+  }
+  
+  .navigation ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .fa-bars{
+    display: none;
+    cursor: pointer;
+    margin-left: 15px;
+  }
+  
+   /* Dropdown styles */
+   .dropdown {
+    position: relative;
+    margin-right: 0;
+    float: right;
+    left: 0;
+  }
+  
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 10px;
+    background-color: #FB4414;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-right: 0;
+  
+  }
+  
+  .dropdown-content {
+    right: calc(100% - 40px); /* Calculate the remaining space to the right */
+    left: auto; /* Reset left property for mobile devices */
+  }
+    
+  .dropdown-content a {
+    padding: 10px;
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+   /* Small Devices (Tablets - Portrait) */
+   @media (max-width: 767.98px) {
+    nav {
+      height: 40px; 
+      
+      align-items: center;
+    }
+  
+    .navigation {
+      display: none;
+    }
+
+    .fa-bars{
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content,
+      .fa-bars:hover + .dropdown-content {
+        display: block;
+      }
+
+    .dropdown-content {
+      right: calc(100% - 40px); 
+      left: auto; 
+    }
+      
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+      text-decoration: none;
+    }
+  
+}
+
+
+/* Medium Devices (Tablets - Landscape) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  nav {
+    height: 40px; /* Adjust height as needed */
+  }
+
+  .navigation a{
+    font-size: 13px; /* Adjust font size as needed */
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+/* Styles for small desktop screens */
+}
+
+/* Extra Large Devices (Large Desktops) */
+@media (min-width: 1200px) {
+/* Styles for large desktop screens */
+}
