@@ -15,6 +15,7 @@ class HomeController extends AbstractController
             'title' => 'HomeScan Diagnostics : “Expertise, Fiabilité, Sérénité."',
             'subTitle' => 'Effectue des missions dans toute l\'ile de france',
             'message' => 'etes vous un particulier ou un professionel ? homescan-Diagnostics assure tout types de missions:...',
+            'image' => '.\public\images\test-image.jpg',
         ]);
     }
 }

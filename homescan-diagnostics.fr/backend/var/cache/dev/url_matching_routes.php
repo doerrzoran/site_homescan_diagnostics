@@ -11,7 +11,7 @@ return [
         '/assets' => [[['_route' => 'app_assets', '_controller' => 'App\\Controller\\AssetsController::index'], null, null, null, false, false, null]],
         '/condominium' => [[['_route' => 'app_condominium', '_controller' => 'App\\Controller\\CondominiumController::index'], null, null, null, false, false, null]],
         '/contacts' => [[['_route' => 'app_contacts', '_controller' => 'App\\Controller\\ContactsController::index'], null, null, null, false, false, null]],
-        '/devis' => [[['_route' => 'app_estimate', '_controller' => 'App\\Controller\\EstimateController::index'], null, null, null, false, false, null]],
+        '/estimate' => [[['_route' => 'app_estimate', '_controller' => 'App\\Controller\\EstimateController::index'], null, null, null, false, false, null]],
         '/home' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/intervention/sector' => [[['_route' => 'app_intervention_sector', '_controller' => 'App\\Controller\\InterventionSectorController::index'], null, null, null, false, false, null]],
         '/missions' => [[['_route' => 'app_missions', '_controller' => 'App\\Controller\\MissionsController::index'], null, null, null, false, false, null]],
