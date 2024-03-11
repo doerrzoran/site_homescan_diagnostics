@@ -9,7 +9,17 @@ export const ApiSlice = createApi({
                 url: '/home',
             })
         }),
-        getContatcts : builder.query({
+        getSociety : builder.query({
+            query : () => ({
+                url: '/society',
+            })
+        }),
+        getMissions : builder.query({
+            query : () => ({
+                url: '/society',
+            })
+        }),
+        getContacts : builder.query({
             query : () => ({
                 url: '/contacts',
             })
@@ -49,9 +59,19 @@ export const ApiSlice = createApi({
                 url: '/pre/rent',
             })
         }),
-        getPreConstruction : builder.query({
+        getPreConstructionLead : builder.query({
             query : () => ({
-                url: '/pre/construction',
+                url: '/pre/construction/lead',
+            })
+        }),
+        getPreConstructionAbsestos : builder.query({
+            query : () => ({
+                url: '/pre/construction/asbesos',
+            })
+        }),
+        getPreConstructionTermites : builder.query({
+            query : () => ({
+                url: '/pre/construction/termites',
             })
         }),
         getPostConstruction : builder.query({
@@ -64,12 +84,67 @@ export const ApiSlice = createApi({
                 url: '/pre/destruction',
             })
         }),
+        getPreDestructionAsbestos : builder.query({
+            query : () => ({
+                url: '/pre/des/asbestos',
+            })
+        }),
+        getPreDestructionTermites : builder.query({
+            query : () => ({
+                url: '/pre/des/termites',
+            })
+        }),
+        getDPE : builder.query({
+            query : () => ({
+                url: '/d/p/e',
+            })
+        }),
+        getDTA : builder.query({
+            query : () => ({
+                url: '/d/t/a',
+            })
+        }),
+        getElectricity : builder.query({
+            query : () => ({
+                url: '/electricity',
+            })
+        }),
+        getGaz : builder.query({
+            query : () => ({
+                url: '/gaz',
+            })
+        }),
+        getLead : builder.query({
+            query : () => ({
+                url: '/lead',
+            })
+        }),
+        getTermites : builder.query({
+            query : () => ({
+                url: '/termites',
+            })
+        }),
+        getERP: builder.query({
+            query : () => ({
+                url: '/e/r/p',
+            })
+        }),
+        getEnergy: builder.query({
+            query : () => ({
+                url: '/energy/estimate',
+            })
+        }),
+        getCarrez: builder.query({
+            query : () => ({
+                url: '/carrez',
+            })
+        }),
     })
 })
 
 export const { 
     useGetHomeQuery,
-    useGetContatctsQuery,
+    useGetContactsQuery,
     useGetInterventionSectorQuery, 
     useGetEstimateQuery,
     useGetSkillsQuery,
@@ -77,7 +152,22 @@ export const {
     useGetCondominiumQuery,
     useGetPreSellQuery,
     useGetPreRentQuery,
-    useGetPreConstructionQuery,
+    useGetPreConstructionLeadQuery,
+    useGetPreConstructionAbsestosQuery,
+    useGetPreConstructionTermitesQuery,
     useGetPostConstructionQuery,
-    useGetPreDestructionQuery
+    useGetPreDestructionQuery,
+    useGetPreDestructionAsbestosQuery,
+    useGetPreDestructionTermitesQuery,
+    useGetDPEQuery,
+    useGetDTAQuery,
+    useGetElectricityQuery,
+    useGetERPQuery,
+    useGetGazQuery,
+    useGetEnergyQuery,
+    useGetLeadQuery,
+    useGetSocietyQuery,
+    useGetMissionsQuery,
+    useGetTermitesQuery,
+    useGetCarrezQuery,
 } = ApiSlice

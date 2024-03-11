@@ -15,6 +15,11 @@ export default function PreSell() {
                                 data.title
                             }
                         </h1>
+                        <p>
+                            {
+                                data.text
+                            }
+                        </p>
                     </div>
                 }
             </div>

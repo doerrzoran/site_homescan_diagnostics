@@ -6,11 +6,11 @@ export default function Layout(props) {
     return(
         <>
             <Header/>
-            <main className="content">
-                {
-                    content
-                }
-            </main>
+                <main className="content">
+                    {
+                        content
+                    }
+                </main>
             <Footer/>
         </>
     )

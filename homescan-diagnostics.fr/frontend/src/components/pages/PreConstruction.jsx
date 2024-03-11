@@ -1,7 +1,7 @@
-import { useGetPreConstructionQuery } from "../../slices/ApiSlice"
+import { useGetPreConstructionLeadQuery } from "../../slices/ApiSlice"
 
 export default function PreConstruction() {
-    const { data, isLoading} = useGetPreConstructionQuery()
+    const { data, isLoading} = useGetPreConstructionLeadQuery()
     
     return(
         <>
@@ -15,6 +15,11 @@ export default function PreConstruction() {
                                 data.title
                             }
                         </h1>
+                        <p>
+                            {
+                                data.text
+                            }
+                        </p>
                     </div>
                 }
             </div>

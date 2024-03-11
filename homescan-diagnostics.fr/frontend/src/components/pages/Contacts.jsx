@@ -1,7 +1,7 @@
-import { useGetContatctsQuery } from "../../slices/ApiSlice"
+import { useGetContactsQuery } from "../../slices/ApiSlice"
 
 export default function Contacts() {
-    const { data, isLoading} = useGetContatctsQuery()
+    const { data, isLoading} = useGetContactsQuery()
     
     return(
         <>

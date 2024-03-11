@@ -1,71 +1,101 @@
-.content{
-    text-align: center;
-    margin-top: 5%;
-  }
-  
+.content {
+  text-align: center;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 80px;
+  white-space: pre;
+}
+
+article {
+  max-width: 90%; /* Adjusted max-width for responsiveness */
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Style the heading level 1 (h1) */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Style the heading level 3 (h3) */
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Style paragraphs (p) */
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  white-space: pre-wrap; /* Use pre-wrap to preserve line breaks */
+  overflow: hidden; /* Prevent overflow */
+  text-overflow: ellipsis; /* Add ellipsis (...) for truncated text */
+  max-width: 100%; 
+}
+
+/* Small Devices (Tablets - Portrait) */
+@media (max-width: 767.98px) {
   article {
-    max-width: 100%;
-    margin: 10px;
-    padding: 15px;
-    box-sizing: border-box;
+    padding: 10px;
   }
-  
-  /* Style the heading level 1 (h1) */
+
   h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 15px;
   }
-  
-  /* Style the heading level 3 (h3) */
+
   h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 12px;
   }
-  
-  /* Style paragraphs (p) */
+
   p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 15px;
+    font-size: 10px;
   }
-  
-  /* Small Devices (Tablets - Portrait) */
-    @media (max-width: 767.98px) {
-  
-      article {
-        padding: 10px;
-      }
-  
-      h1 {
-          font-size: 15px;
-      }
-  
-      h3 {
-          font-size: 12px;
-      }
-  
-      p {
-          font-size: 10px;
-      }
-    
+}
+
+/* Medium Devices (Tablets - Landscape) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  article {
+    padding: 20px;
   }
-  
-  
-  
-  
-  /* Medium Devices (Tablets - Landscape) */
-  @media (min-width: 768px) and (max-width: 991.98px) {
-   
+
+  h1 {
+    font-size: 15px;
   }
-  
-  /* Large Devices (Desktops) */
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-  /* Styles for small desktop screens */
+
+  h3 {
+    font-size: 12px;
   }
-  
-  /* Extra Large Devices (Large Desktops) */
-  @media (min-width: 1200px) {
-  /* Styles for large desktop screens */
+
+  p {
+    font-size: 12px;
   }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  article {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 15px;
+  }
+
+  h3 {
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+/* Extra Large Devices (Large Desktops) */
+@media (min-width: 1200px) {
   
+}

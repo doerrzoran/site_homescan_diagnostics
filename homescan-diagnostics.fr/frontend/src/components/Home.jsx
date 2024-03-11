@@ -6,44 +6,42 @@ export default function Home() {
 
 
     return(
-        <article>
-            <h1>
-            {
-                isLoading ? <p>En Charge</p>:
-                <p>
-                    {
-                        data.title
-                    }
-                </p>
-            }
-            </h1>
-            <h3>
-            {
-                isLoading ? <p>En Charge</p>:
-                <p>
-                    {
-                        data.subTitle
-                    }
-                </p>
-            }
-            </h3>
-            <div>
+        <>
+        {isLoading ? <p>En Charge</p>:
+            <article style= {{ background: `url(${data.image})` }}>
+                <h1>
                 {
                     isLoading ? <p>En Charge</p>:
                     <p>
                         {
-                            data.message
+                            data.title
                         }
                     </p>
                 }
-            </div>
-            <div>
+                </h1>
+                <h3>
                 {
                     isLoading ? <p>En Charge</p>:
-                    <img src={ data.image }/>
+                    <p>
+                        {
+                            data.subTitle
+                        }
+                    </p>
                 }
-            </div>
-            
-        </article>
+                </h3>
+                <div>
+                    {
+                        isLoading ? <p>En Charge</p>:
+                        <p>
+                            {
+                                data.message
+                            }
+                        </p>
+                    }
+                </div>
+                
+            </article>
+}
+        </>
     )
 }
