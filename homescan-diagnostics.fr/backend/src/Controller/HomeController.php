@@ -12,19 +12,21 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function index(HomePageRepository $homePageRepository): JsonResponse
     {
-        // $homePage = $homePageRepository->findOneBy([]);
-
-        // if(!$homePage){
-        //     throw $this->createNotFoundException('...');
-        // }
+        $homePage = $homePageRepository->find(1);
+        if(!$homePage){
+            throw $this->createNotFoundException(('Home page not found'));
+        }
         
-        return $this->json([
-            'title' => 'page d\'accueil',
-            'subTitle' => 'Effectue des missions dans toute l\'ile de france',
-            'message' => 'etes vous un particulier ou un professionel ? homescan-Diagnostics assure tout types de missions:...',
-            'image' => './images/test-image.jpg',
+        $data = [
+            'title' => $homePage->getTitle(),
+            'subTitle' => $homePage->getSubtitle(),
+            'image' => $homePage->getImage(),
+        ];
             
-        ]);
+            
+        return $this->json($data);
     }
 }
+
+
  

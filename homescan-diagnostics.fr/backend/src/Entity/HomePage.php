@@ -22,6 +22,9 @@ class HomePage
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $subtitle = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $message = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class HomePage
     public function setSubtitle(?string $subtitle): static
     {
         $this->subtitle = $subtitle;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(?string $message): static
+    {
+        $this->message = $message;
 
         return $this;
     }
