@@ -27,14 +27,13 @@ export default function Header(){
             <a href="#">Diagnostics en copropriété</a>
                 <div className="sidemenu">
                     <a href="/diagnostics/technique/amiante">Le Dossier Technique Amiante</a>
-                    <a href="#">Le Constat de Risque d'Exposition au Plomb</a>
-                    <a href="#">Les autres missions</a>
+                    <a href="/etat/risques/plomb">Le Constat de Risque d'Exposition au Plomb</a>
                 </div>
             
             <a href="#">Diagnostics avant vente</a>
               <div className="sidemenu">
                 <a href="/loi/carrez">La loi Carrez</a>
-                <a href="#">L'amiante avant-vente</a>
+                <a href="/amiante">L'amiante avant-vente</a>
                 <a href="/etat/risques/plomb">Le Constat de Risque d'Exposition au Plomb</a>
                 <a href="/diagnostics/performance/energetique">Le Diagnostic de Performance Energétique</a>
                 <a href="/termites">Les Termites</a>
@@ -46,8 +45,6 @@ export default function Header(){
             
             <a href="#">Diagnostics avant location</a>
               <div className="sidemenu">
-                <a href="#">La loi Boutin</a>
-                <a href="#">Le Dossier Amiante en Partie Privative</a>
                 <a href="/etat/risques/plomb">Le Constat de Risque d'Exposition au Plomb</a>
                 <a href="/diagnostics/performance/energetique">Le Diagnostic de Performance Energétique</a>
                 <a href="/etat/instalation/electrique">L'état de l'installation intérieure d'Electricité</a>
@@ -67,12 +64,16 @@ export default function Header(){
               <a href="/diagnostics/amiante/avant/démolition">Le Diagnostic Amiante avant démolition</a>
               <a href="/diagnostics/termites/avant/démolition">Le Diagnostic Termites avant démolition</a>
               </div>
-            <a href="#">Diagnostics après travaux</a>
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">
             <a href="/contact">contacts</a>
+          </button>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn">
+            <a href="/admin">Admin</a>
           </button>
         </div>
   </div>

@@ -29,6 +29,8 @@ import Society from './components/pages/Society';
 import Missions from './components/pages/missions';
 import Termites from './components/pages/Termites';
 import Carrez from './components/pages/Carrez';
+import Asbestos from './components/pages/Asbestos';
+import Admin from './components/pages/Admin';
 
 
 function App() {
@@ -38,6 +40,10 @@ const router = useMemo(() => {
     {
       path: '',
       element: <Layout content={<Home/>} />
+    },
+    {
+      path: '/admin',
+      element: <Layout content={<Admin/>} />
     },
     {
       path: '/qui/sommes/nous',
@@ -142,6 +148,10 @@ const router = useMemo(() => {
     {
       path: '/loi/carrez',
       element: <Layout content={<Carrez />} />
+    },
+    {
+      path: '/amiante',
+      element: <Layout content={<Asbestos />} />
     },
   ])
 }, [])

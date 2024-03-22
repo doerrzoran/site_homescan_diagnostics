@@ -303,23 +303,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * form configuration
-     * @default {"enabled":false,"csrf_protection":{"enabled":null,"field_name":"_token"}}
-     * @return \Symfony\Config\Framework\FormConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\FormConfig : static)
-     */
-    public function form(array $value = []): \Symfony\Config\Framework\FormConfig|static
+     * @default {"enabled":true,"csrf_protection":{"enabled":null,"field_name":"_token"}}
+    */
+    public function form(array $value = []): \Symfony\Config\Framework\FormConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['form'] = true;
-            $this->form = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->form instanceof \Symfony\Config\Framework\FormConfig) {
+        if (null === $this->form) {
             $this->_usedProperties['form'] = true;
             $this->form = new \Symfony\Config\Framework\FormConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -572,23 +561,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * assets configuration
-     * @default {"enabled":false,"strict_mode":false,"version_strategy":null,"version":null,"version_format":"%%s?%%s","json_manifest_path":null,"base_path":"","base_urls":[],"packages":[]}
-     * @return \Symfony\Config\Framework\AssetsConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\AssetsConfig : static)
-     */
-    public function assets(array $value = []): \Symfony\Config\Framework\AssetsConfig|static
+     * @default {"enabled":true,"strict_mode":false,"version_strategy":null,"version":null,"version_format":"%%s?%%s","json_manifest_path":null,"base_path":"","base_urls":[],"packages":[]}
+    */
+    public function assets(array $value = []): \Symfony\Config\Framework\AssetsConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['assets'] = true;
-            $this->assets = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->assets instanceof \Symfony\Config\Framework\AssetsConfig) {
+        if (null === $this->assets) {
             $this->_usedProperties['assets'] = true;
             $this->assets = new \Symfony\Config\Framework\AssetsConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -626,23 +604,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * translator configuration
-     * @default {"enabled":false,"fallbacks":[],"logging":false,"formatter":"translator.formatter.default","cache_dir":"%kernel.cache_dir%\/translations","default_path":"%kernel.project_dir%\/translations","paths":[],"pseudo_localization":{"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]},"providers":[]}
-     * @return \Symfony\Config\Framework\TranslatorConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\TranslatorConfig : static)
-     */
-    public function translator(array $value = []): \Symfony\Config\Framework\TranslatorConfig|static
+     * @default {"enabled":true,"fallbacks":[],"logging":false,"formatter":"translator.formatter.default","cache_dir":"%kernel.cache_dir%\/translations","default_path":"%kernel.project_dir%\/translations","paths":[],"pseudo_localization":{"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]},"providers":[]}
+    */
+    public function translator(array $value = []): \Symfony\Config\Framework\TranslatorConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['translator'] = true;
-            $this->translator = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->translator instanceof \Symfony\Config\Framework\TranslatorConfig) {
+        if (null === $this->translator) {
             $this->_usedProperties['translator'] = true;
             $this->translator = new \Symfony\Config\Framework\TranslatorConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -653,23 +620,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * validation configuration
-     * @default {"enabled":false,"enable_attributes":true,"static_method":["loadValidatorMetadata"],"translation_domain":"validators","email_validation_mode":"html5","mapping":{"paths":[]},"not_compromised_password":{"enabled":true,"endpoint":null},"auto_mapping":[]}
-     * @return \Symfony\Config\Framework\ValidationConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\ValidationConfig : static)
-     */
-    public function validation(array $value = []): \Symfony\Config\Framework\ValidationConfig|static
+     * @default {"enabled":true,"enable_attributes":true,"static_method":["loadValidatorMetadata"],"translation_domain":"validators","email_validation_mode":"html5","mapping":{"paths":[]},"not_compromised_password":{"enabled":true,"endpoint":null},"auto_mapping":[]}
+    */
+    public function validation(array $value = []): \Symfony\Config\Framework\ValidationConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['validation'] = true;
-            $this->validation = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->validation instanceof \Symfony\Config\Framework\ValidationConfig) {
+        if (null === $this->validation) {
             $this->_usedProperties['validation'] = true;
             $this->validation = new \Symfony\Config\Framework\ValidationConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -706,23 +662,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * serializer configuration
-     * @default {"enabled":false,"enable_attributes":true,"mapping":{"paths":[]},"default_context":[]}
-     * @return \Symfony\Config\Framework\SerializerConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\SerializerConfig : static)
-     */
-    public function serializer(array $value = []): \Symfony\Config\Framework\SerializerConfig|static
+     * @default {"enabled":true,"enable_attributes":true,"mapping":{"paths":[]},"default_context":[]}
+    */
+    public function serializer(array $value = []): \Symfony\Config\Framework\SerializerConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['serializer'] = true;
-            $this->serializer = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->serializer instanceof \Symfony\Config\Framework\SerializerConfig) {
+        if (null === $this->serializer) {
             $this->_usedProperties['serializer'] = true;
             $this->serializer = new \Symfony\Config\Framework\SerializerConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -733,23 +678,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * Property access configuration
-     * @default {"enabled":false,"magic_call":false,"magic_get":true,"magic_set":true,"throw_exception_on_invalid_index":false,"throw_exception_on_invalid_property_path":true}
-     * @return \Symfony\Config\Framework\PropertyAccessConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\PropertyAccessConfig : static)
-     */
-    public function propertyAccess(array $value = []): \Symfony\Config\Framework\PropertyAccessConfig|static
+     * @default {"enabled":true,"magic_call":false,"magic_get":true,"magic_set":true,"throw_exception_on_invalid_index":false,"throw_exception_on_invalid_property_path":true}
+    */
+    public function propertyAccess(array $value = []): \Symfony\Config\Framework\PropertyAccessConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['propertyAccess'] = true;
-            $this->propertyAccess = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->propertyAccess instanceof \Symfony\Config\Framework\PropertyAccessConfig) {
+        if (null === $this->propertyAccess) {
             $this->_usedProperties['propertyAccess'] = true;
             $this->propertyAccess = new \Symfony\Config\Framework\PropertyAccessConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -760,23 +694,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * Property info configuration
-     * @default {"enabled":false}
-     * @return \Symfony\Config\Framework\PropertyInfoConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\PropertyInfoConfig : static)
-     */
-    public function propertyInfo(array $value = []): \Symfony\Config\Framework\PropertyInfoConfig|static
+     * @default {"enabled":true}
+    */
+    public function propertyInfo(array $value = []): \Symfony\Config\Framework\PropertyInfoConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['propertyInfo'] = true;
-            $this->propertyInfo = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->propertyInfo instanceof \Symfony\Config\Framework\PropertyInfoConfig) {
+        if (null === $this->propertyInfo) {
             $this->_usedProperties['propertyInfo'] = true;
             $this->propertyInfo = new \Symfony\Config\Framework\PropertyInfoConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -1106,23 +1029,12 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     }
     
     /**
-     * @template TValue
-     * @param TValue $value
      * Uid configuration
-     * @default {"enabled":false,"default_uuid_version":7,"name_based_uuid_version":5,"time_based_uuid_version":7}
-     * @return \Symfony\Config\Framework\UidConfig|$this
-     * @psalm-return (TValue is array ? \Symfony\Config\Framework\UidConfig : static)
-     */
-    public function uid(array $value = []): \Symfony\Config\Framework\UidConfig|static
+     * @default {"enabled":true,"default_uuid_version":7,"name_based_uuid_version":5,"time_based_uuid_version":7}
+    */
+    public function uid(array $value = []): \Symfony\Config\Framework\UidConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['uid'] = true;
-            $this->uid = $value;
-    
-            return $this;
-        }
-    
-        if (!$this->uid instanceof \Symfony\Config\Framework\UidConfig) {
+        if (null === $this->uid) {
             $this->_usedProperties['uid'] = true;
             $this->uid = new \Symfony\Config\Framework\UidConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -1312,7 +1224,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     
         if (array_key_exists('form', $value)) {
             $this->_usedProperties['form'] = true;
-            $this->form = \is_array($value['form']) ? new \Symfony\Config\Framework\FormConfig($value['form']) : $value['form'];
+            $this->form = new \Symfony\Config\Framework\FormConfig($value['form']);
             unset($value['form']);
         }
     
@@ -1372,7 +1284,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     
         if (array_key_exists('assets', $value)) {
             $this->_usedProperties['assets'] = true;
-            $this->assets = \is_array($value['assets']) ? new \Symfony\Config\Framework\AssetsConfig($value['assets']) : $value['assets'];
+            $this->assets = new \Symfony\Config\Framework\AssetsConfig($value['assets']);
             unset($value['assets']);
         }
     
@@ -1384,13 +1296,13 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     
         if (array_key_exists('translator', $value)) {
             $this->_usedProperties['translator'] = true;
-            $this->translator = \is_array($value['translator']) ? new \Symfony\Config\Framework\TranslatorConfig($value['translator']) : $value['translator'];
+            $this->translator = new \Symfony\Config\Framework\TranslatorConfig($value['translator']);
             unset($value['translator']);
         }
     
         if (array_key_exists('validation', $value)) {
             $this->_usedProperties['validation'] = true;
-            $this->validation = \is_array($value['validation']) ? new \Symfony\Config\Framework\ValidationConfig($value['validation']) : $value['validation'];
+            $this->validation = new \Symfony\Config\Framework\ValidationConfig($value['validation']);
             unset($value['validation']);
         }
     
@@ -1402,19 +1314,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     
         if (array_key_exists('serializer', $value)) {
             $this->_usedProperties['serializer'] = true;
-            $this->serializer = \is_array($value['serializer']) ? new \Symfony\Config\Framework\SerializerConfig($value['serializer']) : $value['serializer'];
+            $this->serializer = new \Symfony\Config\Framework\SerializerConfig($value['serializer']);
             unset($value['serializer']);
         }
     
         if (array_key_exists('property_access', $value)) {
             $this->_usedProperties['propertyAccess'] = true;
-            $this->propertyAccess = \is_array($value['property_access']) ? new \Symfony\Config\Framework\PropertyAccessConfig($value['property_access']) : $value['property_access'];
+            $this->propertyAccess = new \Symfony\Config\Framework\PropertyAccessConfig($value['property_access']);
             unset($value['property_access']);
         }
     
         if (array_key_exists('property_info', $value)) {
             $this->_usedProperties['propertyInfo'] = true;
-            $this->propertyInfo = \is_array($value['property_info']) ? new \Symfony\Config\Framework\PropertyInfoConfig($value['property_info']) : $value['property_info'];
+            $this->propertyInfo = new \Symfony\Config\Framework\PropertyInfoConfig($value['property_info']);
             unset($value['property_info']);
         }
     
@@ -1504,7 +1416,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
     
         if (array_key_exists('uid', $value)) {
             $this->_usedProperties['uid'] = true;
-            $this->uid = \is_array($value['uid']) ? new \Symfony\Config\Framework\UidConfig($value['uid']) : $value['uid'];
+            $this->uid = new \Symfony\Config\Framework\UidConfig($value['uid']);
             unset($value['uid']);
         }
     
@@ -1580,7 +1492,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['csrf_protection'] = $this->csrfProtection->toArray();
         }
         if (isset($this->_usedProperties['form'])) {
-            $output['form'] = $this->form instanceof \Symfony\Config\Framework\FormConfig ? $this->form->toArray() : $this->form;
+            $output['form'] = $this->form->toArray();
         }
         if (isset($this->_usedProperties['httpCache'])) {
             $output['http_cache'] = $this->httpCache instanceof \Symfony\Config\Framework\HttpCacheConfig ? $this->httpCache->toArray() : $this->httpCache;
@@ -1610,28 +1522,28 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['request'] = $this->request instanceof \Symfony\Config\Framework\RequestConfig ? $this->request->toArray() : $this->request;
         }
         if (isset($this->_usedProperties['assets'])) {
-            $output['assets'] = $this->assets instanceof \Symfony\Config\Framework\AssetsConfig ? $this->assets->toArray() : $this->assets;
+            $output['assets'] = $this->assets->toArray();
         }
         if (isset($this->_usedProperties['assetMapper'])) {
             $output['asset_mapper'] = $this->assetMapper instanceof \Symfony\Config\Framework\AssetMapperConfig ? $this->assetMapper->toArray() : $this->assetMapper;
         }
         if (isset($this->_usedProperties['translator'])) {
-            $output['translator'] = $this->translator instanceof \Symfony\Config\Framework\TranslatorConfig ? $this->translator->toArray() : $this->translator;
+            $output['translator'] = $this->translator->toArray();
         }
         if (isset($this->_usedProperties['validation'])) {
-            $output['validation'] = $this->validation instanceof \Symfony\Config\Framework\ValidationConfig ? $this->validation->toArray() : $this->validation;
+            $output['validation'] = $this->validation->toArray();
         }
         if (isset($this->_usedProperties['annotations'])) {
             $output['annotations'] = $this->annotations instanceof \Symfony\Config\Framework\AnnotationsConfig ? $this->annotations->toArray() : $this->annotations;
         }
         if (isset($this->_usedProperties['serializer'])) {
-            $output['serializer'] = $this->serializer instanceof \Symfony\Config\Framework\SerializerConfig ? $this->serializer->toArray() : $this->serializer;
+            $output['serializer'] = $this->serializer->toArray();
         }
         if (isset($this->_usedProperties['propertyAccess'])) {
-            $output['property_access'] = $this->propertyAccess instanceof \Symfony\Config\Framework\PropertyAccessConfig ? $this->propertyAccess->toArray() : $this->propertyAccess;
+            $output['property_access'] = $this->propertyAccess->toArray();
         }
         if (isset($this->_usedProperties['propertyInfo'])) {
-            $output['property_info'] = $this->propertyInfo instanceof \Symfony\Config\Framework\PropertyInfoConfig ? $this->propertyInfo->toArray() : $this->propertyInfo;
+            $output['property_info'] = $this->propertyInfo->toArray();
         }
         if (isset($this->_usedProperties['cache'])) {
             $output['cache'] = $this->cache->toArray();
@@ -1676,7 +1588,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['rate_limiter'] = $this->rateLimiter instanceof \Symfony\Config\Framework\RateLimiterConfig ? $this->rateLimiter->toArray() : $this->rateLimiter;
         }
         if (isset($this->_usedProperties['uid'])) {
-            $output['uid'] = $this->uid instanceof \Symfony\Config\Framework\UidConfig ? $this->uid->toArray() : $this->uid;
+            $output['uid'] = $this->uid->toArray();
         }
         if (isset($this->_usedProperties['htmlSanitizer'])) {
             $output['html_sanitizer'] = $this->htmlSanitizer instanceof \Symfony\Config\Framework\HtmlSanitizerConfig ? $this->htmlSanitizer->toArray() : $this->htmlSanitizer;

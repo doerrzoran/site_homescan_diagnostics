@@ -8,10 +8,10 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\Admin\\DashboardController::index'], null, null, null, false, false, null]],
         '/asbestos' => [[['_route' => 'app_asbestos', '_controller' => 'App\\Controller\\AsbestosController::index'], null, null, null, false, false, null]],
         '/assets' => [[['_route' => 'app_assets', '_controller' => 'App\\Controller\\AssetsController::index'], null, null, null, false, false, null]],
         '/carrez' => [[['_route' => 'app_carrez', '_controller' => 'App\\Controller\\CarrezController::index'], null, null, null, false, false, null]],
-        '/condominium' => [[['_route' => 'app_condominium', '_controller' => 'App\\Controller\\CondominiumController::index'], null, null, null, false, false, null]],
         '/contacts' => [[['_route' => 'app_contacts', '_controller' => 'App\\Controller\\ContactsController::index'], null, null, null, false, false, null]],
         '/d/p/e' => [[['_route' => 'app_d_p_e', '_controller' => 'App\\Controller\\DPEController::index'], null, null, null, false, false, null]],
         '/d/t/a' => [[['_route' => 'app_d_t_a', '_controller' => 'App\\Controller\\DTAController::index'], null, null, null, false, false, null]],
@@ -21,6 +21,7 @@ return [
         '/estimate' => [[['_route' => 'app_estimate', '_controller' => 'App\\Controller\\EstimateController::index'], null, null, null, false, false, null]],
         '/gaz' => [[['_route' => 'app_gaz', '_controller' => 'App\\Controller\\GazController::index'], null, null, null, false, false, null]],
         '/home' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
+        '/home/update' => [[['_route' => 'update_homepage', '_controller' => 'App\\Controller\\HomeUpdateController::updateHomePage'], null, ['POST' => 0], null, false, false, null]],
         '/intervention/sector' => [[['_route' => 'app_intervention_sector', '_controller' => 'App\\Controller\\InterventionSectorController::index'], null, null, null, false, false, null]],
         '/lead' => [[['_route' => 'app_lead', '_controller' => 'App\\Controller\\LeadController::index'], null, null, null, false, false, null]],
         '/missions' => [[['_route' => 'app_missions', '_controller' => 'App\\Controller\\MissionsController::index'], null, null, null, false, false, null]],

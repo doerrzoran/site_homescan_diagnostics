@@ -16,7 +16,7 @@ export const ApiSlice = createApi({
         }),
         getMissions : builder.query({
             query : () => ({
-                url: '/society',
+                url: '/missions',
             })
         }),
         getContacts : builder.query({
@@ -139,6 +139,11 @@ export const ApiSlice = createApi({
                 url: '/carrez',
             })
         }),
+        getAsbestos: builder.query({
+            query : () => ({
+                url: '/asbestos',
+            })
+        }),
     })
 })
 
@@ -170,4 +175,5 @@ export const {
     useGetMissionsQuery,
     useGetTermitesQuery,
     useGetCarrezQuery,
+    useGetAsbestosQuery,
 } = ApiSlice

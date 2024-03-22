@@ -32,7 +32,8 @@ when@test:
 when@prod:
     doctrine:
         orm:
-            auto_generate_proxy_classes: false
+            auto_generate_proxy_classes: true
+            logging: '%kernel.logs_dir%/doctrine.log'
             proxy_dir: '%kernel.build_dir%/doctrine/orm/Proxies'
             query_cache_driver:
                 type: pool

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+
 import { useGetHomeQuery } from "../slices/ApiSlice"
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
                     isLoading ? <p>En Charge</p>:
                     <p>
                         {
-                            data.subTitle
+                            data.subtitle
                         }
                     </p>
                 }

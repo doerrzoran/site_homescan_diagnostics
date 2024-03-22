@@ -251,8 +251,8 @@ p {
       display: block;
     }
 
-    .mobile:hover .mobile-content,
-      .fa-bars:hover + .mobile-content {
+    .dropdown:hover .dropdown-content,
+      .fa-bars:hover + .dropdown-content {
         display: block;
       }
 

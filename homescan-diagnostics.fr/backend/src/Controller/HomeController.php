@@ -19,7 +19,8 @@ class HomeController extends AbstractController
         
         $data = [
             'title' => $homePage->getTitle(),
-            'subTitle' => $homePage->getSubtitle(),
+            'subtitle' => $homePage->getSubtitle(),
+            'message' => $homePage->getMessage(),
             'image' => $homePage->getImage(),
         ];
             
