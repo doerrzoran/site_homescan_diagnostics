@@ -7,7 +7,7 @@ export default function Contacts() {
         <>
             <div>
                 {
-                    isLoading ? <p>is loading</p>:
+                    isLoading ? <p></p>:
                     <div>
 
                         <h2> email : 

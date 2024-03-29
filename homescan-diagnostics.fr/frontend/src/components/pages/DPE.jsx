@@ -7,7 +7,7 @@ export default function DPE() {
         <>
             <div>
                 {
-                    isLoading ? <p>is loading</p>:
+                    isLoading ? <p></p>:
                     <div>
 
                         <h1>

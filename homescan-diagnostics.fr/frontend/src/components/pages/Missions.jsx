@@ -7,7 +7,7 @@ export default function Missions() {
         <>
             <div>
                 {
-                    isLoading ? <p>is loading</p>:
+                    isLoading ? <p></p>:
                     <div>
 
                         <h1>

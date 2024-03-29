@@ -31,6 +31,27 @@ import Termites from './components/pages/Termites';
 import Carrez from './components/pages/Carrez';
 import Asbestos from './components/pages/Asbestos';
 import Admin from './components/pages/Admin';
+import HomeUpdate from './components/pages/updates/HomeUpdate';
+import ContactsUpdate from './components/pages/updates/ContactsUpdate';
+import InterventionUpdate from './components/pages/updates/InterventionUpdate';
+import SocietyUpdate from './components/pages/updates/SocietyUpdate';
+import MissionsUpdate from './components/pages/updates/MissionsUpdate';
+import DTAUpdate from './components/pages/updates/DTAUpdate';
+import CREPUpdate from './components/pages/updates/CREPUpdate';
+import CarrezUpdate from './components/pages/updates/CarrezUpdate';
+import AsbestosUpdate from './components/pages/updates/AsbestosUpdate';
+import DPEUpdate from './components/pages/updates/DPEUpdate';
+import TermitesUpdate from './components/pages/updates/TermitesUpdate';
+import ElectricityUpdate from './components/pages/updates/ElectricityUpdate';
+import GazUpdate from './components/pages/updates/GazUpdate';
+import EnergyUpdate from './components/pages/updates/energyUpdate';
+import ERPUpdate from './components/pages/updates/ERPUpdate';
+import RAATUpdate from './components/pages/updates/RAATUpdate';
+import DPATUpdate from './components/pages/updates/DPATUpdate';
+import DTATUpdate from './components/pages/updates/DTATUpdate';
+import DPADUpdate from './components/pages/updates/DPADUpdate';
+import DTADUpdate from './components/pages/updates/DTADUpdate';
+import DAADUpdate from './components/pages/updates/DAADUpdate';
 
 
 function App() {
@@ -152,6 +173,90 @@ const router = useMemo(() => {
     {
       path: '/amiante',
       element: <Layout content={<Asbestos />} />
+    },
+    {
+      path:'/update/homepage',
+      element : <Layout content={<HomeUpdate/> } />
+    },
+    {
+      path:'/update/contact',
+      element : <Layout content={<ContactsUpdate/> } />
+    },
+    {
+      path:'/update/intervention',
+      element : <Layout content={<InterventionUpdate/> } />
+    },
+    {
+      path:'/update/society',
+      element : <Layout content={<SocietyUpdate/> } />
+    },
+    {
+      path:'/update/missions',
+      element : <Layout content={<MissionsUpdate/> } />
+    },
+    {
+      path:'/update/DTA',
+      element : <Layout content={<DTAUpdate/> } />
+    },
+    {
+      path:'/update/CREP',
+      element : <Layout content={<CREPUpdate/> } />
+    },
+    {
+      path:'/update/carrez',
+      element : <Layout content={<CarrezUpdate/> } />
+    },
+    {
+      path:'/update/amiante',
+      element : <Layout content={<AsbestosUpdate/> } />
+    },
+    {
+      path:'/update/dpe',
+      element : <Layout content={<DPEUpdate/> } />
+    },
+    {
+      path:'/update/termites',
+      element : <Layout content={<TermitesUpdate/> } />
+    },
+    {
+      path:'/update/electricite',
+      element : <Layout content={<ElectricityUpdate/> } />
+    },
+    {
+      path:'/update/gaz',
+      element : <Layout content={<GazUpdate/> } />
+    },
+    {
+      path:'/update/energie',
+      element : <Layout content={<EnergyUpdate/> } />
+    },
+    {
+      path:'/update/erp',
+      element : <Layout content={<ERPUpdate/> } />
+    },
+    {
+      path:'/update/raat',
+      element : <Layout content={<RAATUpdate/> } />
+    },
+    {
+      path:'/update/dpat',
+      element : <Layout content={<DPATUpdate/> } />
+    },
+    {
+      path:'/update/dtat',
+      element : <Layout content={<DTATUpdate/> } />
+    },
+    {
+      path:'/update/dpad',
+      element : <Layout content={<DPADUpdate/> } />
+    },
+    {
+      path:'/update/dtad',
+      element : <Layout content={<DTADUpdate/> } />
+    },
+    {
+      path:'/update/daad',
+      element : <Layout content={<DAADUpdate/> } />
     },
   ])
 }, [])

@@ -1,33 +1,73 @@
 
-import { useState } from "react";
-import { useUpdateHomePageMutation } from "../../slices/UpdateSlice";
-
 export default function Admin() {
-  const [newTitle, setNewTitle] = useState('');
-  const [updateHomePage, { isLoading, isError }] = useUpdateHomePageMutation();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateHomePage({ title: newTitle }); // Call the mutation with the new title
-    setNewTitle(''); // Clear the input field after submitting
-  };
 
   return (
-    <div>
-      <h2>Admin Panel</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="newTitle">New Title:</label>
-        <input
-          type="text"
-          id="newTitle"
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-        />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Updating...' : 'Update Title'}
-        </button>
-        {isError && <p>Error updating title.</p>}
-      </form>
-    </div>
+    <>
+      <ul className='adminlist'>
+        <li>
+          <a href="/update/homepage">accueil</a>
+        </li>
+        <li>
+          <a href="/update/contact">contacts</a>
+        </li>
+        <li>
+          <a href="/update/intervention">secteurs d'interventions</a>
+        </li>
+        <li>
+          <a href="/update/society">L'entreprise</a>
+        </li>
+        <li>
+          <a href="/update/missions">Nos missions</a>
+        </li>
+        <li>
+          <a href="/update/DTA">DTA</a>
+        </li>
+        <li>
+          <a href="/update/CREP">CREP</a>
+        </li>
+        <li>
+          <a href="/update/carrez">Carrez</a>
+        </li>
+        <li>
+          <a href="/update/amiante">Amiante</a>
+        </li>
+        <li>
+          <a href="/update/dpe">DPE</a>
+        </li>
+        <li>
+          <a href="/update/termites">Termites</a>
+        </li>
+        <li>
+          <a href="/update/electricite">Electricité</a>
+        </li>
+        <li>
+          <a href="/update/gaz">Gaz</a>
+        </li>
+        <li>
+          <a href="/update/energie">energie</a>
+        </li>
+        <li>
+          <a href="/update/erp">ERP</a>
+        </li>
+        <li>
+          <a href="/update/raat">RAAT</a>
+        </li>
+        <li>
+          <a href="/update/dpat">DPAT</a>
+        </li>
+        <li>
+          <a href="/update/dtat">DTAT</a>
+        </li>
+        <li>
+          <a href="/update/dpad">DPAD</a>
+        </li>
+        <li>
+          <a href="/update/dtad">DTAD</a>
+        </li>
+        <li>
+          <a href="/update/daad">DAAD</a>
+        </li>
+      </ul>
+    </>
   );
 }

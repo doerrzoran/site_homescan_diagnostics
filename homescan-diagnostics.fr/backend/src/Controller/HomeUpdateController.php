@@ -11,12 +11,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomeUpdateController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
 
     #[Route('/home/update', name: 'update_homepage', methods: ['POST'])]
     public function updateHomePage(Request $request, EntityManagerInterface $entityManager): Response
@@ -55,7 +49,7 @@ class HomeUpdateController extends AbstractController
             // Commit transaction
             $entityManager->commit();
             
-            return $this->json(['message' => 'Changes saved successfully']);
+            return $this->json(['message' => 'update succesfull']);
         } catch (\Exception $e) {
             // Rollback transaction if an exception occurs
             $entityManager->rollback();

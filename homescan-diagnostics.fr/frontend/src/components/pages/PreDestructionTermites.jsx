@@ -12,7 +12,7 @@ export default function PreDestructionTermites() {
         <>
             <div>
                 {
-                    isLoading ? <p>is loading</p>:
+                    isLoading ? <p></p>:
                     <div>
 
                         <h1>

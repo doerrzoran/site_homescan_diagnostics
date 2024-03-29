@@ -13,7 +13,7 @@ class PreDestructionController extends AbstractController
     #[Route('/pre/destruction', name: 'app_pre_destruction')]
     public function index(DPADRepository $DPADRepository): JsonResponse
     {
-        $DPAD = $DPADRepository->find(1);
+        $DPAD = $DPADRepository->find(2);
         if(!$DPAD){
             throw $this->createNotFoundException(('Home page not found'));
         }

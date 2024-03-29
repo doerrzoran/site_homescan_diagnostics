@@ -16,7 +16,7 @@ class Missions
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
+    #[ORM\Column(length: 1000, nullable: true)]
     private ?string $text = null;
 
     public function getId(): ?int

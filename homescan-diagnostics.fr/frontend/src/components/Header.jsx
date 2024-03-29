@@ -10,6 +10,7 @@ export default function Header(){
 <div className="dropdown">
           <button className="dropbtn">Accueil</button>
           <div className="dropdown-content">
+            <a href="/contact">contacts</a>
             <a href="/intervention">Secteurs d'intervention</a>
             <a href="/estimate">Demande de devis</a>
           </div>
@@ -67,14 +68,7 @@ export default function Header(){
           </div>
         </div>
         <div className="dropdown">
-          <button className="dropbtn">
-            <a href="/contact">contacts</a>
-          </button>
-        </div>
-        <div className="dropdown">
-          <button className="dropbtn">
             <a href="/admin">Admin</a>
-          </button>
         </div>
   </div>
         
