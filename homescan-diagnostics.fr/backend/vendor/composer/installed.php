@@ -3,7 +3,7 @@
         'name' => 'symfony/skeleton',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8cd37c8b47f883e069548b91830de8337762b277',
+        'reference' => '1425b0bf459bf658a112cc1b9c1a99ffe4ee713c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -339,6 +339,15 @@
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'symfony/debug-bundle' => array(
+            'pretty_version' => 'v7.0.3',
+            'version' => '7.0.3.0',
+            'reference' => 'b0db5c443883ce5c10c2265c77feb9833c3d9d6d',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/debug-bundle',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'symfony/dependency-injection' => array(
             'pretty_version' => 'v7.0.2',
@@ -718,7 +727,7 @@
         'symfony/skeleton' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8cd37c8b47f883e069548b91830de8337762b277',
+            'reference' => '1425b0bf459bf658a112cc1b9c1a99ffe4ee713c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

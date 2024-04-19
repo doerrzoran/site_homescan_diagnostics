@@ -1,4 +1,7 @@
+import { useGetContactsQuery } from "../slices/ApiSlice"
+
 export default function Footer() {
+    const { data, isLoading} = useGetContactsQuery()
     
     return(
         <footer className="footer">
@@ -10,10 +13,22 @@ export default function Footer() {
             </p>
         </div>
         <div className="column">  
-            <p>contact: <br />
-                00 00 00 00 00 <br />
-                contact@homescan-diagnostics.fr
-            </p>
+        {
+                    isLoading ? <p></p>:
+                    <div>
+
+                        <p> 
+                            {
+                                data.mail
+                            }
+                        </p>
+                        <p>  
+                            {
+                                data.phoneNumber
+                            }
+                        </p>
+                    </div>
+                }
         </div>
         <div className="column adress">
             <p>49 Allée de la tour <br />

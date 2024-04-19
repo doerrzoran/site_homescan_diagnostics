@@ -1,5 +1,6 @@
 
 import logo from '../assets/image/HOME-SCAN-DIAGNOSTICS-LOGO-1.jpg';
+import MobileMenue from './mobileMenue';
 
 export default function Header(){
   return (
@@ -7,7 +8,7 @@ export default function Header(){
     <nav>
     <img onClick={() => window.location.href = '/'} className="logo" src={logo} alt="Logo" />
       <div className="navigation">
-<div className="dropdown">
+        <div className="dropdown">
           <button className="dropbtn">Accueil</button>
           <div className="dropdown-content">
             <a href="/contact">contacts</a>
@@ -15,13 +16,7 @@ export default function Header(){
             <a href="/estimate">Demande de devis</a>
           </div>
         </div>
-        <div className="dropdown">
-          <button className="dropbtn">La societé</button>
-          <div className="dropdown-content">
-            <a href="/qui/sommes/nous">qui sommes-nous ?</a>
-            <a href="/nos/missions">Nos missions</a>
-          </div>
-        </div>
+
         <div className="dropdown">
           <button className="dropbtn">Missions</button>
           <div className="dropdown-content">
@@ -68,20 +63,22 @@ export default function Header(){
           </div>
         </div>
         <div className="dropdown">
+          <button className="dropbtn">La societé</button>
+          <div className="dropdown-content">
+            <a href="/qui/sommes/nous">qui sommes-nous ?</a>
+            <a href="/nos/missions">Nos missions</a>
+          </div>
+        </div>
+        
+        <div className="dropdown">
             <a href="/admin">Admin</a>
         </div>
   </div>
         
 
-  <div className="mobile">
-    <i className="fa-solid fa-bars"></i>
-      <ul className="mobile-content">
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Entreprise</a></li>
-        <li><a href="#">Missions</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
+  <MobileMenue/>
+
+
     </nav>
   </header>
   );

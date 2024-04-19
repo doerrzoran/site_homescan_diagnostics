@@ -9,6 +9,7 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\Admin\\DashboardController::index'], null, null, null, false, false, null]],
+        '/admin/authentification' => [[['_route' => 'app_admin_authentification', '_controller' => 'App\\Controller\\AdminController::index'], null, ['POST' => 0], null, false, false, null]],
         '/asbestos' => [[['_route' => 'app_asbestos', '_controller' => 'App\\Controller\\AsbestosController::index'], null, null, null, false, false, null]],
         '/asbestos/update' => [[['_route' => 'app_asbestos_update', '_controller' => 'App\\Controller\\AsbestosUpdateController::index'], null, null, null, false, false, null]],
         '/assets' => [[['_route' => 'app_assets', '_controller' => 'App\\Controller\\AssetsController::index'], null, null, null, false, false, null]],

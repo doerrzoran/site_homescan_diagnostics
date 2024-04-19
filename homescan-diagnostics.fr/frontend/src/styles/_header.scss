@@ -106,7 +106,12 @@ nav {
     display: block;
   }
 
-/*  */
+//mobile
+
+  .mobile {
+    position: relative;
+    display: inline-block; /* Ensures the dropdown content aligns with the icon */
+  }
 
   .fa-bars{
     display: none;
@@ -114,48 +119,33 @@ nav {
     margin-left: 15px;
   }
   
-   /* Dropdown styles */
-   .mobile {
-    position: relative;
-    margin-right: 0;
-    float: right;
-    left: 0;
-  }
-  
-  
-  
+
   .mobile-content {
     display: none;
     position: absolute;
-    top: 10px;
+    top: 100%;
     background-color: #FB4414;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 100px;
-    padding: 10px;
-    margin-top: 5px;
-    margin-right: 0;
-  
-  }
-  
-  .mobile-content {
-    right: calc(100% - 40px); /* Calculate the remaining space to the right */
-    left: auto; /* Reset left property for mobile devices */
-  }
-    
-  .mobile-content a {
-    padding: 10px;
-    display: block;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    border-bottom: #fff;
-    color: #fff;
-    text-decoration: none;
-  }
+    min-width: 320px;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
 
+.mobile-content .dropbtn{
+  font-size: 1.8rem;
+}
+
+.mobile-content .dropdown-content a{
+  font-size: 0.8rem;
+  max-width: 150px;
+}
+  
+  
     /* Small Devices (Tablets - Portrait) */
   @media (max-width: 767.98px) {
     nav {
-      height: 40px; 
+      height: 80px; 
       
       align-items: center;
     }
@@ -170,7 +160,9 @@ nav {
 
     .mobile:hover .mobile-content,
       .fa-bars:hover + .mobile-content {
-        display: block;
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-start; 
       }
 
     .mobile-content {
@@ -178,19 +170,6 @@ nav {
       left: auto; 
     }
       
-    .mobile-content a {
-      padding: 10px;
-      display: block;
-      margin-bottom: 5px;
-      color: #fff;
-      font-size: 15px;
-    }
-    .mobile-content a:hover {
-      text-decoration: underline;
-    }
-    .mobile-content li {
-      list-style-type: none;
-    }
   
 }
 

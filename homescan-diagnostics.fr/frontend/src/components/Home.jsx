@@ -8,7 +8,9 @@ export default function Home() {
     return(
         <>
         {isLoading ? <p>En Charge</p>:
-            <article style= {{ background: `url(${data.image})` }}>
+            <article 
+            style= {{ background: `url(${data.image})` }}
+            >
                 <h1>
                 {
                     isLoading ? <p>En Charge</p>:

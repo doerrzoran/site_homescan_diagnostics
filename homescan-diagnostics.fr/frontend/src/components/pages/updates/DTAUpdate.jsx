@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGetAsbestosQuery, useGetDTAQuery } from "../../../slices/ApiSlice";
+import { useGetDTAQuery } from "../../../slices/ApiSlice";
 import { useUpdateDtaMutation } from "../../../slices/UpdateSlice";
 
 export default function DTAUpdate() {

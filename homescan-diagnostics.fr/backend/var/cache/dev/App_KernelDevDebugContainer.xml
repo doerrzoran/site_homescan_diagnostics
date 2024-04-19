@@ -21,6 +21,7 @@
       <parameter key="TwigBundle">Symfony\Bundle\TwigBundle\TwigBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
+      <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -54,6 +55,10 @@
       <parameter key="EasyAdminBundle" type="collection">
         <parameter key="path">D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\easycorp\easyadmin-bundle\src</parameter>
         <parameter key="namespace">EasyCorp\Bundle\EasyAdminBundle</parameter>
+      </parameter>
+      <parameter key="DebugBundle" type="collection">
+        <parameter key="path">D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\debug-bundle</parameter>
+        <parameter key="namespace">Symfony\Bundle\DebugBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -138,6 +143,7 @@
     <parameter key="nelmio_cors.defaults" type="collection">
       <parameter key="allow_origin" type="collection">
         <parameter>%env(CORS_ALLOW_ORIGIN)%</parameter>
+        <parameter>http://192.168.1.21:5173</parameter>
       </parameter>
       <parameter key="allow_credentials">false</parameter>
       <parameter key="allow_headers" type="collection">
@@ -250,9 +256,9 @@
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="security.firewalls" type="collection">
       <parameter>dev</parameter>
-      <parameter>main</parameter>
     </parameter>
     <parameter key="security.logout_uris" type="collection"/>
+    <parameter key="env(VAR_DUMPER_SERVER)">127.0.0.1:9912</parameter>
     <parameter key="console.command.ids" type="collection"/>
   </parameters>
   <services>
@@ -269,6 +275,13 @@
       </call>
       <call method="setDescription">
         <argument>Add a short description for your command</argument>
+      </call>
+    </service>
+    <service id="App\Controller\AdminController" class="App\Controller\AdminController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jUv.zyj.App\Controller\AdminController"/>
       </call>
     </service>
     <service id="App\Controller\Admin\AbsestosCrudController" class="App\Controller\Admin\AbsestosCrudController" public="true" autowire="true" autoconfigure="true">
@@ -807,6 +820,7 @@
         <argument type="service" id=".service_locator.jUv.zyj.App\Controller\TermitesUpdateController"/>
       </call>
     </service>
+    <service id="App\Entity\Admin" class="App\Entity\Admin" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\Asbestos" class="App\Entity\Asbestos" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\CREP" class="App\Entity\CREP" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\Carrez" class="App\Entity\Carrez" autowire="true" autoconfigure="true"/>
@@ -830,6 +844,10 @@
     <service id="App\Entity\RAAT" class="App\Entity\RAAT" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\Society" class="App\Entity\Society" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\Termites" class="App\Entity\Termites" autowire="true" autoconfigure="true"/>
+    <service id="App\Repository\AdminRepository" class="App\Repository\AdminRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\AsbestosRepository" class="App\Repository\AsbestosRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -952,7 +970,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.SHV22tU"/>
+      <argument type="service" id=".service_locator.Uco5C62"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1086,7 +1104,6 @@
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_is_granted_attribute_expression_language" type="service" id="cache.security_is_granted_attribute_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="debug.security.firewall" type="service" id="debug.security.firewall" on-invalid="ignore_uninitialized"/>
-        <argument key="debug.security.firewall.authenticator.main" type="service" id="debug.security.firewall.authenticator.main" on-invalid="ignore_uninitialized"/>
       </argument>
       <argument type="collection">
         <argument key="cache.app" type="collection">
@@ -1145,9 +1162,6 @@
           <argument>reset</argument>
         </argument>
         <argument key="debug.security.firewall" type="collection">
-          <argument>reset</argument>
-        </argument>
-        <argument key="debug.security.firewall.authenticator.main" type="collection">
           <argument>reset</argument>
         </argument>
       </argument>
@@ -1465,7 +1479,7 @@
     <service id="console.command.event_dispatcher_debug" class="Symfony\Bundle\FrameworkBundle\Command\EventDispatcherDebugCommand">
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator._1SGciK"/>
+      <argument type="service" id=".service_locator.9ETxUxh"/>
       <call method="setName">
         <argument>debug:event-dispatcher</argument>
       </call>
@@ -2369,6 +2383,7 @@
           <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
           <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\twig-bundle/translations</argument>
           <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\security-bundle/translations</argument>
+          <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\debug-bundle/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
@@ -2384,6 +2399,7 @@
             <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
             <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\twig-bundle/translations</argument>
             <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\security-bundle/translations</argument>
+            <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\debug-bundle/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -2761,14 +2777,6 @@
         <argument>1024</argument>
       </call>
       <call method="addListener">
-        <argument>kernel.response</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.context_listener.0"/>
-          <argument>onKernelResponse</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
           <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener"/>
@@ -3081,6 +3089,14 @@
         <argument>128</argument>
       </call>
       <call method="addListener">
+        <argument>console.command</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="debug.dump_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>1024</argument>
+      </call>
+      <call method="addListener">
         <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
         <argument type="collection">
           <argument type="service_closure" id="security.listener.csrf_protection"/>
@@ -3110,7 +3126,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.SHV22tU"/>
+      <argument type="service" id=".service_locator.Uco5C62"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -4436,7 +4452,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.lIBJ9oD"/>
+      <argument type="service" id=".service_locator.SiOj5AW"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4939,10 +4955,10 @@
         <argument type="service" id="twig.extension.security"/>
       </call>
       <call method="addExtension">
-        <argument type="service" id="doctrine.twig.doctrine_extension"/>
+        <argument type="service" id="twig.extension.dump"/>
       </call>
       <call method="addExtension">
-        <argument type="service" id="twig.extension.debug"/>
+        <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
       <call method="addExtension">
         <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension"/>
@@ -5029,6 +5045,14 @@
         <argument>!EasyAdmin</argument>
       </call>
       <call method="addPath">
+        <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\debug-bundle/Resources/views</argument>
+        <argument>Debug</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\vendor\symfony\debug-bundle/Resources/views</argument>
+        <argument>!Debug</argument>
+      </call>
+      <call method="addPath">
         <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend/templates</argument>
       </call>
       <call method="addPath">
@@ -5082,9 +5106,7 @@
       <tag name="twig.extension"/>
       <argument type="service" id="url_helper"/>
     </service>
-    <service id="twig.extension.debug" class="Twig\Extension\DebugExtension">
-      <tag name="twig.extension"/>
-    </service>
+    <service id="twig.extension.debug" class="Twig\Extension\DebugExtension"/>
     <service id="twig.extension.weblink" class="Symfony\Bridge\Twig\Extension\WebLinkExtension">
       <argument type="service" id="request_stack"/>
     </service>
@@ -5183,7 +5205,6 @@
       <argument type="service" id=".service_locator.BlxN3Cw"/>
       <argument type="collection">
         <argument key="dev">null</argument>
-        <argument key="main">null</argument>
       </argument>
     </service>
     <service id="security.user_value_resolver" class="Symfony\Component\Security\Http\Controller\UserValueResolver">
@@ -5222,10 +5243,9 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="security.firewall.map" class="Symfony\Bundle\SecurityBundle\Security\FirewallMap">
-      <argument type="service" id=".service_locator.zJyh7qS"/>
+      <argument type="service" id=".service_locator.yZnLB1s"/>
       <argument type="iterator">
         <argument key="security.firewall.map.context.dev" type="service" id=".security.request_matcher.kLbKLHa"/>
-        <argument key="security.firewall.map.context.main">null</argument>
       </argument>
     </service>
     <service id="security.firewall.context" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext" abstract="true">
@@ -5462,9 +5482,7 @@
       <argument type="service" id="security.access_map"/>
     </service>
     <service id="security.firewall.event_dispatcher_locator" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <argument type="collection">
-        <argument key="main" type="service_closure" id="debug.security.event_dispatcher.main"/>
-      </argument>
+      <argument type="collection"/>
     </service>
     <service id="security.authenticator.manager" class="Symfony\Component\Security\Http\Authentication\AuthenticatorManager" abstract="true">
       <tag name="monolog.logger" channel="security"/>
@@ -5478,9 +5496,7 @@
       <argument type="abstract">required badges</argument>
     </service>
     <service id="security.authenticator.managers_locator" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <argument type="collection">
-        <argument key="main" type="service_closure" id="security.authenticator.manager.main"/>
-      </argument>
+      <argument type="collection"/>
     </service>
     <service id="security.user_authenticator" class="Symfony\Bundle\SecurityBundle\Security\UserAuthenticator">
       <argument type="service" id="security.firewall.map"/>
@@ -5648,11 +5664,9 @@
       <tag name="console.command" command="debug:firewall"/>
       <tag name="container.no_preload"/>
       <argument>%security.firewalls%</argument>
-      <argument type="service" id=".service_locator.zJyh7qS"/>
-      <argument type="service" id=".service_locator._1SGciK"/>
-      <argument type="collection">
-        <argument key="main" type="collection"/>
-      </argument>
+      <argument type="service" id=".service_locator.yZnLB1s"/>
+      <argument type="service" id=".service_locator.9ETxUxh"/>
+      <argument type="collection"/>
       <argument>false</argument>
       <call method="setName">
         <argument>debug:firewall</argument>
@@ -5693,96 +5707,10 @@
       <argument>null</argument>
       <argument type="service" id="security.firewall.map.config.dev"/>
     </service>
-    <service id="security.firewall.map.config.main" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig">
-      <argument>main</argument>
-      <argument>security.user_checker</argument>
-      <argument>null</argument>
-      <argument>true</argument>
-      <argument>false</argument>
-      <argument>security.user.provider.concrete.users_in_memory</argument>
-      <argument>main</argument>
-      <argument>null</argument>
-      <argument>null</argument>
-      <argument>null</argument>
-      <argument type="collection"/>
-      <argument>null</argument>
-      <argument>null</argument>
-    </service>
-    <service id="security.listener.main.user_provider" class="Symfony\Component\Security\Http\EventListener\UserProviderListener">
-      <tag name="kernel.event_listener" dispatcher="debug.security.event_dispatcher.main" event="Symfony\Component\Security\Http\Event\CheckPassportEvent" priority="2048" method="checkPassport"/>
-      <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
-    </service>
-    <service id="security.user_checker.chain.main" class="Symfony\Component\Security\Core\User\ChainUserChecker">
-      <argument type="tagged_iterator" tag="security.user_checker.main"/>
-    </service>
-    <service id="security.context_listener.0" class="Symfony\Component\Security\Http\Firewall\ContextListener">
-      <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse"/>
-      <tag name="container.hot_path"/>
-      <argument type="service" id="security.untracked_token_storage"/>
-      <argument type="iterator">
-        <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
-      </argument>
-      <argument>main</argument>
-      <argument type="service" id="logger" on-invalid="null"/>
-      <argument type="service" id="debug.security.event_dispatcher.main"/>
-      <argument type="service" id="security.authentication.trust_resolver"/>
-      <argument type="collection">
-        <argument type="service" id="security.token_storage"/>
-        <argument>enableUsageTracking</argument>
-      </argument>
-    </service>
-    <service id="security.listener.session.main" class="Symfony\Component\Security\Http\EventListener\SessionStrategyListener">
-      <tag name="kernel.event_subscriber" dispatcher="debug.security.event_dispatcher.main"/>
-      <argument type="service" id="security.authentication.session_strategy"/>
-    </service>
-    <service id="security.authenticator.manager.main" class="Symfony\Component\Security\Http\Authentication\AuthenticatorManager">
-      <tag name="monolog.logger" channel="security"/>
-      <argument type="collection"/>
-      <argument type="service" id="security.token_storage"/>
-      <argument type="service" id="debug.security.event_dispatcher.main"/>
-      <argument>main</argument>
-      <argument type="service" id="logger" on-invalid="null"/>
-      <argument>true</argument>
-      <argument>true</argument>
-      <argument type="collection"/>
-    </service>
-    <service id="debug.security.firewall.authenticator.main" class="Symfony\Component\Security\Http\Authenticator\Debug\TraceableAuthenticatorManagerListener">
-      <tag name="kernel.reset" method="reset"/>
-      <tag name="container.decorator" id="security.firewall.authenticator.main" inner="debug.security.firewall.authenticator.main.inner"/>
-      <argument type="service" id="debug.security.firewall.authenticator.main.inner"/>
-    </service>
-    <service id="security.listener.user_checker.main" class="Symfony\Component\Security\Http\EventListener\UserCheckerListener">
-      <tag name="kernel.event_subscriber" dispatcher="debug.security.event_dispatcher.main"/>
-      <argument type="service" id="security.user_checker"/>
-    </service>
-    <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener">
-      <argument type="service" id="security.token_storage"/>
-      <argument type="service" id="security.authentication.trust_resolver"/>
-      <argument type="service" id="security.http_utils"/>
-      <argument>main</argument>
-      <argument>null</argument>
-      <argument>null</argument>
-      <argument>null</argument>
-      <argument type="service" id="logger" on-invalid="null"/>
-      <argument>false</argument>
-    </service>
-    <service id="security.firewall.map.context.main" class="Symfony\Bundle\SecurityBundle\Security\LazyFirewallContext">
-      <argument type="iterator">
-        <argument type="service" id="security.channel_listener"/>
-        <argument type="service" id="security.context_listener.0"/>
-        <argument type="service" id="debug.security.firewall.authenticator.main"/>
-        <argument type="service" id="security.access_listener"/>
-      </argument>
-      <argument type="service" id="security.exception_listener.main"/>
-      <argument>null</argument>
-      <argument type="service" id="security.firewall.map.config.main"/>
-      <argument type="service" id="security.untracked_token_storage"/>
-    </service>
-    <service id=".service_locator.zJyh7qS" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.yZnLB1s" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="security.firewall.map.context.dev" type="service_closure" id="security.firewall.map.context.dev"/>
-        <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
     </service>
     <service id="security.command.user_password_hash" class="Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand">
@@ -6121,8 +6049,118 @@
       <tag name="assets.package" package="easyadmin.assets.package"/>
       <argument type="service" id="request_stack"/>
     </service>
+    <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="var_dumper.cloner"/>
+      <argument type="service" id="var_dumper.html_dumper"/>
+    </service>
+    <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector" public="true">
+      <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>
+      <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
+      <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
+      <argument>UTF-8</argument>
+      <argument>null</argument>
+      <argument type="service" id="var_dumper.server_connection"/>
+    </service>
+    <service id="debug.dump_listener" class="Symfony\Component\HttpKernel\EventListener\DumpListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="var_dumper.cloner"/>
+      <argument type="service" id="var_dumper.contextualized_cli_dumper"/>
+      <argument type="service" id="var_dumper.server_connection"/>
+    </service>
+    <service id="var_dumper.cloner" class="Symfony\Component\VarDumper\Cloner\VarCloner" public="true">
+      <call method="setMaxItems">
+        <argument>2500</argument>
+      </call>
+      <call method="setMinDepth">
+        <argument>1</argument>
+      </call>
+      <call method="setMaxString">
+        <argument>-1</argument>
+      </call>
+      <call method="addCasters">
+        <argument type="collection">
+          <argument key="Closure">Symfony\Component\VarDumper\Caster\ReflectionCaster::unsetClosureFileInfo</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="var_dumper.contextualized_cli_dumper" class="Symfony\Component\VarDumper\Dumper\ContextualizedDumper">
+      <tag name="container.decorator" id="var_dumper.cli_dumper" inner="var_dumper.contextualized_cli_dumper.inner"/>
+      <argument type="service" id="var_dumper.contextualized_cli_dumper.inner"/>
+      <argument type="collection">
+        <argument key="source" type="service">
+          <service class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider">
+            <argument>UTF-8</argument>
+            <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend</argument>
+            <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
+          </service>
+        </argument>
+      </argument>
+    </service>
+    <service id="var_dumper.html_dumper" class="Symfony\Component\VarDumper\Dumper\HtmlDumper">
+      <argument>null</argument>
+      <argument>UTF-8</argument>
+      <argument>0</argument>
+      <call method="setDisplayOptions">
+        <argument type="collection">
+          <argument key="fileLinkFormat" type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
+        </argument>
+      </call>
+    </service>
+    <service id="var_dumper.server_connection" class="Symfony\Component\VarDumper\Server\Connection">
+      <argument>tcp://%env(VAR_DUMPER_SERVER)%</argument>
+      <argument type="collection">
+        <argument key="source" type="service">
+          <service class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider">
+            <argument>UTF-8</argument>
+            <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend</argument>
+            <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
+          </service>
+        </argument>
+        <argument key="request" type="service">
+          <service class="Symfony\Component\VarDumper\Dumper\ContextProvider\RequestContextProvider">
+            <argument type="service" id="request_stack"/>
+          </service>
+        </argument>
+        <argument key="cli" type="service">
+          <service class="Symfony\Component\VarDumper\Dumper\ContextProvider\CliContextProvider"/>
+        </argument>
+      </argument>
+    </service>
+    <service id="var_dumper.dump_server" class="Symfony\Component\VarDumper\Server\DumpServer">
+      <tag name="monolog.logger" channel="debug"/>
+      <argument>tcp://%env(VAR_DUMPER_SERVER)%</argument>
+      <argument type="service" id="logger" on-invalid="null"/>
+    </service>
+    <service id="var_dumper.command.server_dump" class="Symfony\Component\VarDumper\Command\ServerDumpCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="var_dumper.dump_server"/>
+      <argument type="collection">
+        <argument key="cli" type="service">
+          <service class="Symfony\Component\VarDumper\Command\Descriptor\CliDescriptor">
+            <argument type="service" id="var_dumper.contextualized_cli_dumper.inner"/>
+          </service>
+        </argument>
+        <argument key="html" type="service">
+          <service class="Symfony\Component\VarDumper\Command\Descriptor\HtmlDescriptor">
+            <argument type="service" id="var_dumper.html_dumper"/>
+          </service>
+        </argument>
+      </argument>
+      <call method="setName">
+        <argument>server:dump</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Start a dump server that collects and displays dumps in a single place</argument>
+      </call>
+    </service>
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\DestroyEntityCommand" class="App\Command\DestroyEntityCommand" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Command\DestroyEntityCommand" class="App\Command\DestroyEntityCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\AbsestosCrudController" class="App\Controller\Admin\AbsestosCrudController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\AbsestosCrudController" class="App\Controller\Admin\AbsestosCrudController" autowire="true" abstract="true"/>
     <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\AbsestosCrudController" class="App\Controller\Admin\AbsestosCrudController" autowire="true" abstract="true"/>
@@ -6367,6 +6405,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TermitesUpdateController" class="App\Controller\TermitesUpdateController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TermitesUpdateController" class="App\Controller\TermitesUpdateController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TermitesUpdateController" class="App\Controller\TermitesUpdateController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AdminRepository" class="App\Repository\AdminRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\AdminRepository" class="App\Repository\AdminRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AsbestosRepository" class="App\Repository\AsbestosRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\AsbestosRepository" class="App\Repository\AsbestosRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CREPRepository" class="App\Repository\CREPRepository" autowire="true" abstract="true"/>
@@ -6866,6 +6906,12 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.CsMkqUa" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.Nb584vp" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6910,12 +6956,6 @@
         <argument key="fields" type="service_closure" id=".errored..service_locator.lng3o3t.EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection"/>
         <argument key="filters" type="service_closure" id=".errored..service_locator.lng3o3t.EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection"/>
         <argument key="searchDto" type="service_closure" id=".errored..service_locator.lng3o3t.EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto"/>
-      </argument>
-    </service>
-    <service id=".service_locator.CsMkqUa" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
     <service id=".service_locator.Lazlz4J" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7058,9 +7098,10 @@
         <argument key="termitesRepository" type="service_closure" id="App\Repository\TermitesRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.SHV22tU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Uco5C62" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\Admin\AbsestosCrudController::autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
         <argument key="App\Controller\Admin\AbsestosCrudController::batchDelete" type="service_closure" id=".service_locator.twrFs.m"/>
         <argument key="App\Controller\Admin\AbsestosCrudController::configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
@@ -7611,6 +7652,7 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\Admin\AbsestosCrudController:autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
         <argument key="App\Controller\Admin\AbsestosCrudController:batchDelete" type="service_closure" id=".service_locator.twrFs.m"/>
         <argument key="App\Controller\Admin\AbsestosCrudController:configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
@@ -8273,9 +8315,10 @@
         <argument key="doctrine.orm.listeners.pdo_session_handler_schema_listener" type="service_closure" id="doctrine.orm.listeners.pdo_session_handler_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.lIBJ9oD" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.SiOj5AW" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\AdminRepository" type="service_closure" id="App\Repository\AdminRepository"/>
         <argument key="App\Repository\AsbestosRepository" type="service_closure" id="App\Repository\AsbestosRepository"/>
         <argument key="App\Repository\CREPRepository" type="service_closure" id="App\Repository\CREPRepository"/>
         <argument key="App\Repository\CarrezRepository" type="service_closure" id="App\Repository\CarrezRepository"/>
@@ -8346,10 +8389,10 @@
     <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry">
       <argument>D:\professionel\Homescan\site-homescan\site\homescan-diagnostics.fr\backend\var\cache\dev</argument>
       <argument type="collection">
-        <argument key="App\Controller\Admin\DashboardController">9aff458</argument>
+        <argument key="App\Controller\Admin\DashboardController">e565073</argument>
       </argument>
       <argument type="collection">
-        <argument key="9aff458">App\Controller\Admin\DashboardController</argument>
+        <argument key="e565073">App\Controller\Admin\DashboardController</argument>
       </argument>
     </service>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry">
@@ -8380,30 +8423,30 @@
         <argument key="App\Controller\Admin\TermitesCrudController">App\Entity\Termites</argument>
       </argument>
       <argument type="collection">
-        <argument key="App\Controller\Admin\AbsestosCrudController">9a319bc</argument>
-        <argument key="App\Controller\Admin\AsbestosCrudController">ca5b84b</argument>
-        <argument key="App\Controller\Admin\CREPCrudController">839c025</argument>
-        <argument key="App\Controller\Admin\CarrezCrudController">bb86e30</argument>
-        <argument key="App\Controller\Admin\ContactCrudController">2fffc07</argument>
-        <argument key="App\Controller\Admin\DAADCrudController">9bda25a</argument>
-        <argument key="App\Controller\Admin\DPADCrudController">40ee886</argument>
-        <argument key="App\Controller\Admin\DPATCrudController">0b99063</argument>
-        <argument key="App\Controller\Admin\DPECrudController">63833f3</argument>
-        <argument key="App\Controller\Admin\DTACrudController">a8fd253</argument>
-        <argument key="App\Controller\Admin\DTADCrudController">46f558f</argument>
-        <argument key="App\Controller\Admin\DTATCrudController">bfe54ba</argument>
-        <argument key="App\Controller\Admin\ERPCrudController">e586452</argument>
-        <argument key="App\Controller\Admin\ElectricityCrudController">1bc7b1e</argument>
-        <argument key="App\Controller\Admin\EnergyCrudController">20a37a8</argument>
-        <argument key="App\Controller\Admin\EstimateCrudController">ef0fe8e</argument>
-        <argument key="App\Controller\Admin\GazCrudController">773ccd3</argument>
-        <argument key="App\Controller\Admin\HomePageCrudController">42f9a70</argument>
-        <argument key="App\Controller\Admin\InterventionSectorsCrudController">c64c92a</argument>
-        <argument key="App\Controller\Admin\LeadCrudController" type="string">3074248</argument>
-        <argument key="App\Controller\Admin\MissionsCrudController">155aac9</argument>
-        <argument key="App\Controller\Admin\RAATCrudController">aaf9a97</argument>
-        <argument key="App\Controller\Admin\SocietyCrudController">86966f4</argument>
-        <argument key="App\Controller\Admin\TermitesCrudController">8a6c079</argument>
+        <argument key="App\Controller\Admin\AbsestosCrudController">ed88ec9</argument>
+        <argument key="App\Controller\Admin\AsbestosCrudController">dcf3cd4</argument>
+        <argument key="App\Controller\Admin\CREPCrudController">41bce5f</argument>
+        <argument key="App\Controller\Admin\CarrezCrudController">c64968f</argument>
+        <argument key="App\Controller\Admin\ContactCrudController">f5b8170</argument>
+        <argument key="App\Controller\Admin\DAADCrudController">60a6254</argument>
+        <argument key="App\Controller\Admin\DPADCrudController" type="string">3439218</argument>
+        <argument key="App\Controller\Admin\DPATCrudController">1479c00</argument>
+        <argument key="App\Controller\Admin\DPECrudController" type="string">8e63574</argument>
+        <argument key="App\Controller\Admin\DTACrudController">9ef1867</argument>
+        <argument key="App\Controller\Admin\DTADCrudController">dc6f9d4</argument>
+        <argument key="App\Controller\Admin\DTATCrudController">44f90e2</argument>
+        <argument key="App\Controller\Admin\ERPCrudController">3be894f</argument>
+        <argument key="App\Controller\Admin\ElectricityCrudController">b813f2f</argument>
+        <argument key="App\Controller\Admin\EnergyCrudController">dd34989</argument>
+        <argument key="App\Controller\Admin\EstimateCrudController">469ef40</argument>
+        <argument key="App\Controller\Admin\GazCrudController">e98d8df</argument>
+        <argument key="App\Controller\Admin\HomePageCrudController">377c362</argument>
+        <argument key="App\Controller\Admin\InterventionSectorsCrudController">06ea8e9</argument>
+        <argument key="App\Controller\Admin\LeadCrudController">26c1bc8</argument>
+        <argument key="App\Controller\Admin\MissionsCrudController">fcb5133</argument>
+        <argument key="App\Controller\Admin\RAATCrudController">7b3a4fa</argument>
+        <argument key="App\Controller\Admin\SocietyCrudController">eed8eb0</argument>
+        <argument key="App\Controller\Admin\TermitesCrudController">4d08011</argument>
       </argument>
       <argument type="collection">
         <argument key="App\Entity\Absestos">App\Controller\Admin\AbsestosCrudController</argument>
@@ -8432,30 +8475,30 @@
         <argument key="App\Entity\Termites">App\Controller\Admin\TermitesCrudController</argument>
       </argument>
       <argument type="collection">
-        <argument key="9a319bc">App\Controller\Admin\AbsestosCrudController</argument>
-        <argument key="ca5b84b">App\Controller\Admin\AsbestosCrudController</argument>
-        <argument key="839c025">App\Controller\Admin\CREPCrudController</argument>
-        <argument key="bb86e30">App\Controller\Admin\CarrezCrudController</argument>
-        <argument key="2fffc07">App\Controller\Admin\ContactCrudController</argument>
-        <argument key="9bda25a">App\Controller\Admin\DAADCrudController</argument>
-        <argument key="40ee886">App\Controller\Admin\DPADCrudController</argument>
-        <argument key="0b99063">App\Controller\Admin\DPATCrudController</argument>
-        <argument key="63833f3">App\Controller\Admin\DPECrudController</argument>
-        <argument key="a8fd253">App\Controller\Admin\DTACrudController</argument>
-        <argument key="46f558f">App\Controller\Admin\DTADCrudController</argument>
-        <argument key="bfe54ba">App\Controller\Admin\DTATCrudController</argument>
-        <argument key="e586452">App\Controller\Admin\ERPCrudController</argument>
-        <argument key="1bc7b1e">App\Controller\Admin\ElectricityCrudController</argument>
-        <argument key="20a37a8">App\Controller\Admin\EnergyCrudController</argument>
-        <argument key="ef0fe8e">App\Controller\Admin\EstimateCrudController</argument>
-        <argument key="773ccd3">App\Controller\Admin\GazCrudController</argument>
-        <argument key="42f9a70">App\Controller\Admin\HomePageCrudController</argument>
-        <argument key="c64c92a">App\Controller\Admin\InterventionSectorsCrudController</argument>
-        <argument key="3074248">App\Controller\Admin\LeadCrudController</argument>
-        <argument key="155aac9">App\Controller\Admin\MissionsCrudController</argument>
-        <argument key="aaf9a97">App\Controller\Admin\RAATCrudController</argument>
-        <argument key="86966f4">App\Controller\Admin\SocietyCrudController</argument>
-        <argument key="8a6c079">App\Controller\Admin\TermitesCrudController</argument>
+        <argument key="ed88ec9">App\Controller\Admin\AbsestosCrudController</argument>
+        <argument key="dcf3cd4">App\Controller\Admin\AsbestosCrudController</argument>
+        <argument key="41bce5f">App\Controller\Admin\CREPCrudController</argument>
+        <argument key="c64968f">App\Controller\Admin\CarrezCrudController</argument>
+        <argument key="f5b8170">App\Controller\Admin\ContactCrudController</argument>
+        <argument key="60a6254">App\Controller\Admin\DAADCrudController</argument>
+        <argument key="3439218">App\Controller\Admin\DPADCrudController</argument>
+        <argument key="1479c00">App\Controller\Admin\DPATCrudController</argument>
+        <argument key="8e63574">App\Controller\Admin\DPECrudController</argument>
+        <argument key="9ef1867">App\Controller\Admin\DTACrudController</argument>
+        <argument key="dc6f9d4">App\Controller\Admin\DTADCrudController</argument>
+        <argument key="44f90e2">App\Controller\Admin\DTATCrudController</argument>
+        <argument key="3be894f">App\Controller\Admin\ERPCrudController</argument>
+        <argument key="b813f2f">App\Controller\Admin\ElectricityCrudController</argument>
+        <argument key="dd34989">App\Controller\Admin\EnergyCrudController</argument>
+        <argument key="469ef40">App\Controller\Admin\EstimateCrudController</argument>
+        <argument key="e98d8df">App\Controller\Admin\GazCrudController</argument>
+        <argument key="377c362">App\Controller\Admin\HomePageCrudController</argument>
+        <argument key="06ea8e9">App\Controller\Admin\InterventionSectorsCrudController</argument>
+        <argument key="26c1bc8">App\Controller\Admin\LeadCrudController</argument>
+        <argument key="fcb5133">App\Controller\Admin\MissionsCrudController</argument>
+        <argument key="7b3a4fa">App\Controller\Admin\RAATCrudController</argument>
+        <argument key="eed8eb0">App\Controller\Admin\SocietyCrudController</argument>
+        <argument key="4d08011">App\Controller\Admin\TermitesCrudController</argument>
       </argument>
     </service>
     <service id="logger" class="Symfony\Component\HttpKernel\Log\Logger">
@@ -8481,85 +8524,26 @@
         <argument key="translation.loader.yml" type="service_closure" id="translation.loader.yml"/>
       </argument>
     </service>
-    <service id="debug.security.event_dispatcher.main" class="Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher">
-      <tag name="security.event_dispatcher.main">event_dispatcher.dispatcher</tag>
-      <tag name="container.decorator" id="security.event_dispatcher.main" inner="debug.security.event_dispatcher.main.inner"/>
-      <argument type="service" id="debug.security.event_dispatcher.main.inner"/>
-      <argument type="service" id="debug.stopwatch"/>
-      <argument type="service" id="logger" on-invalid="null"/>
-      <argument type="service" id="request_stack" on-invalid="null"/>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.main.user_provider"/>
-          <argument>checkPassport</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\LoginSuccessEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.session.main"/>
-          <argument>onSuccessfulLogin</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.user_checker.main"/>
-          <argument>preCheckCredentials</argument>
-        </argument>
-        <argument>256</argument>
-      </call>
-      <call method="addListener">
-        <argument>security.authentication.success</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.user_checker.main"/>
-          <argument>postCheckCredentials</argument>
-        </argument>
-        <argument>256</argument>
-      </call>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.user_provider"/>
-          <argument>checkPassport</argument>
-        </argument>
-        <argument>1024</argument>
-      </call>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.check_authenticator_credentials"/>
-          <argument>checkPassport</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\LoginSuccessEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.password_migrating"/>
-          <argument>onLoginSuccess</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.listener.csrf_protection"/>
-          <argument>checkPassport</argument>
-        </argument>
-        <argument>512</argument>
-      </call>
-      <call method="addListener">
-        <argument>Symfony\Component\Security\Http\Event\LogoutEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="security.logout.listener.csrf_token_clearing"/>
-          <argument>onLogout</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
+    <service id=".service_locator.jUv.zyj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="form.factory" type="service_closure" id="form.factory" on-invalid="ignore"/>
+        <argument key="http_kernel" type="service_closure" id="http_kernel" on-invalid="ignore"/>
+        <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
+        <argument key="request_stack" type="service_closure" id="request_stack" on-invalid="ignore"/>
+        <argument key="router" type="service_closure" id="router.default" on-invalid="ignore"/>
+        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker" on-invalid="ignore"/>
+        <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
+        <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
+        <argument key="serializer" type="service_closure" id="serializer" on-invalid="ignore"/>
+        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jUv.zyj.App\Controller\AdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AdminController"/>
+      <argument>App\Controller\AdminController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jUv.zyj" method="withContext"/>
     </service>
     <service id=".service_locator.ZP92gqz" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -8754,21 +8738,6 @@
       <argument>App\Controller\Admin\TermitesCrudController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ZP92gqz" method="withContext"/>
-    </service>
-    <service id=".service_locator.jUv.zyj" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="form.factory" type="service_closure" id="form.factory" on-invalid="ignore"/>
-        <argument key="http_kernel" type="service_closure" id="http_kernel" on-invalid="ignore"/>
-        <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
-        <argument key="request_stack" type="service_closure" id="request_stack" on-invalid="ignore"/>
-        <argument key="router" type="service_closure" id="router.default" on-invalid="ignore"/>
-        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker" on-invalid="ignore"/>
-        <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
-        <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
-        <argument key="serializer" type="service_closure" id="serializer" on-invalid="ignore"/>
-        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
-      </argument>
     </service>
     <service id=".service_locator.jUv.zyj.App\Controller\AsbestosController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\AsbestosController"/>
@@ -9144,11 +9113,10 @@
         <argument key="cache.app" type="service_closure" id="cache.app.taggable"/>
       </argument>
     </service>
-    <service id=".service_locator._1SGciK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9ETxUxh" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="event_dispatcher" type="service_closure" id="debug.event_dispatcher"/>
-        <argument key="security.event_dispatcher.main" type="service_closure" id="debug.security.event_dispatcher.main"/>
       </argument>
     </service>
     <service id=".service_locator.LD5oJC8" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -9228,8 +9196,15 @@
         </service>
       </argument>
     </service>
-    <service id="debug.security.firewall.authenticator.main.inner" class="Symfony\Component\Security\Http\Firewall\AuthenticatorManagerListener">
-      <argument type="service" id="security.authenticator.manager.main"/>
+    <service id="var_dumper.contextualized_cli_dumper.inner" class="Symfony\Component\VarDumper\Dumper\CliDumper">
+      <argument>null</argument>
+      <argument>UTF-8</argument>
+      <argument>0</argument>
+      <call method="setDisplayOptions">
+        <argument type="collection">
+          <argument key="fileLinkFormat" type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
+        </argument>
+      </call>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -9237,7 +9212,6 @@
         <argument>App\Entity</argument>
       </call>
     </service>
-    <service id="debug.security.event_dispatcher.main.inner" class="Symfony\Component\EventDispatcher\EventDispatcher"/>
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
     </service>
@@ -9660,6 +9634,13 @@
       <argument>false</argument>
       <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand"/>
     </service>
+    <service id=".var_dumper.command.server_dump.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>server:dump</argument>
+      <argument type="collection"/>
+      <argument>Start a dump server that collects and displays dumps in a single place</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="var_dumper.command.server_dump"/>
+    </service>
     <service id=".maker.auto_command.make_auth.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>make:auth</argument>
       <argument type="collection"/>
@@ -9835,7 +9816,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.Ui_585W"/>
+      <argument type="service" id=".service_locator._VRFqZu"/>
       <argument type="collection">
         <argument key="DestroyEntityCommand">App\Command\DestroyEntityCommand</argument>
         <argument key="about">console.command.about</argument>
@@ -9906,6 +9887,7 @@
         <argument key="security:hash-password">security.command.user_password_hash</argument>
         <argument key="make:admin:dashboard">EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand</argument>
         <argument key="make:admin:crud">EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand</argument>
+        <argument key="server:dump">var_dumper.command.server_dump</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:twig-component">maker.auto_command.make_twig_component</argument>
@@ -9935,7 +9917,7 @@
         <argument key="make:security:form-login">maker.auto_command.make_security_form_login</argument>
       </argument>
     </service>
-    <service id=".service_locator.Ui_585W" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator._VRFqZu" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Command\DestroyEntityCommand" type="service_closure" id=".App\Command\DestroyEntityCommand.lazy"/>
@@ -10031,6 +10013,7 @@
         <argument key="security.command.user_password_hash" type="service_closure" id=".security.command.user_password_hash.lazy"/>
         <argument key="twig.command.debug" type="service_closure" id=".twig.command.debug.lazy"/>
         <argument key="twig.command.lint" type="service_closure" id=".twig.command.lint.lazy"/>
+        <argument key="var_dumper.command.server_dump" type="service_closure" id=".var_dumper.command.server_dump.lazy"/>
       </argument>
     </service>
     <service id=".service_locator.pTeli0u" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -10157,15 +10140,13 @@
     <service id="security.firewall" alias="debug.security.firewall"/>
     <service id="security.user_providers" alias="security.user.provider.concrete.users_in_memory"/>
     <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.users_in_memory"/>
-    <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
-    <service id="security.user_checker.main" alias="security.user_checker"/>
-    <service id="security.firewall.context_locator" alias=".service_locator.zJyh7qS"/>
+    <service id="security.firewall.context_locator" alias=".service_locator.yZnLB1s"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Menu\MenuItemMatcherInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Menu\MenuItemMatcher"/>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Orm\EntityPaginatorInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.bJ.4HC5" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.SHV22tU"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Uco5C62"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -10176,10 +10157,10 @@
     <service id="argument_resolver" alias="debug.argument_resolver"/>
     <service id="twig.error_renderer.html.inner" alias="error_handler.error_renderer.html"/>
     <service id="security.access.decision_manager" alias="debug.security.access.decision_manager"/>
-    <service id="security.firewall.authenticator.main" alias="debug.security.firewall.authenticator.main"/>
+    <service id="var_dumper.cli_dumper" alias="var_dumper.contextualized_cli_dumper"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
-    <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
+    <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
     <service id=".service_locator.b4Agcrj" alias=".service_locator.Nb584vp"/>
     <service id=".service_locator.rr8g6a9" alias=".service_locator.wvbCcwL"/>
     <service id=".service_locator.1aiqmLQ" alias=".service_locator.UrOEf8r"/>
@@ -10187,7 +10168,6 @@
     <service id=".service_locator.AMJoP_V" alias=".service_locator.t9B7cZ4"/>
     <service id=".service_locator.naWTw8u" alias=".service_locator.twrFs.m"/>
     <service id=".service_locator.9P2n2Z1" alias=".service_locator.lng3o3t"/>
-    <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
     <service id=".service_locator.i.G3y1p" alias=".service_locator.Lazlz4J"/>
     <service id=".service_locator.z_typH5" alias=".service_locator.vMUOjiq"/>
     <service id=".service_locator.uoBNKjJ" alias=".service_locator.t7nLwyX"/>
@@ -10211,8 +10191,8 @@
     <service id=".service_locator.spDbtyJ" alias=".service_locator.SnRU_qq"/>
     <service id=".service_locator.zu1zxyb" alias=".service_locator.IzFTN.7"/>
     <service id=".service_locator.LeC53JA" alias=".service_locator.1qRlNrC"/>
+    <service id=".service_locator.Cj5mqT." alias=".service_locator.jUv.zyj"/>
     <service id=".service_locator.TG7RI.d" alias=".service_locator.ZP92gqz"/>
     <service id=".service_locator.vjXmPk6" alias=".service_locator.yTMp7CA"/>
-    <service id=".service_locator.Cj5mqT." alias=".service_locator.jUv.zyj"/>
   </services>
 </container>

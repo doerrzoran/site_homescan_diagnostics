@@ -46,10 +46,10 @@ export default function ContactsUpdate(params) {
             <div className="form-group">
                 <label htmlFor="newPhoneNumber">telephone:</label>
                 <input
-                    type="tel"
+                    type="text"
                     className="form-control"
                     id="newPhoneNumber"
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
+                    pattern="\d{2}\.\d{2}\.\d{2}\.\d{2}\.\d{2}"                    
                     value={newPhoneNumber}
                     onChange={(e) => setNewPhoneNumber(e.target.value)}
                 />    
